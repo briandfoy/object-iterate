@@ -252,6 +252,10 @@ members of the project can shepherd this module appropriately.
 
 * let the methods discover the method names per object.
 
+=head1 CREDITS
+
+Thanks to Slaven Rezic for adding __init__ support
+
 =head1 AUTHOR
 
 brian d foy, E<lt>bdfoy@cpan.orgE<gt>.
