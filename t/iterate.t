@@ -1,20 +1,25 @@
 # $Id$
+use strict;
 
 use Test::More tests => 2;
 
 use Object::Iterate qw(iterate);
-use Object::Iterate::Tester;
 
-my $o = Object::Iterate::Tester->new();
-isa_ok( $o, 'Object::Iterate::Tester' );
+my $o = T->new();
+isa_ok( $o, 'T' );
 
-print STDERR "o is @$o\n";
-
-iterate { $_ = "$_$_" } $o;
+my @out = ();
+iterate { push @out, "$_$_" } $o;
 
 my @expected = qw( AA BB CC DD EE FF );
 
-print STDERR "o is @$o\n";
-print STDERR "expected is @expected\n";
+ok( eq_array( \@out, \@expected ), 'Iterate returned the right thing' );
 
-ok( eq_array( $o, \@expected ), "iterate gives the right result" );
+BEGIN {
+	package T;
+	
+	sub new { bless { A => [ 'A' .. 'F' ] }, __PACKAGE__     }
+	sub __init__ { $_[0]{Pos} = 0                   }
+	sub __next__ { $_[0]{A}[ $_[0]{Pos}++ ]          }
+	sub __more__ { $_[0]{Pos} > $#{ $_[0]{A} } ? 0 : 1 }
+	}
