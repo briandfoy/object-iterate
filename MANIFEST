@@ -1,11 +1,14 @@
-# $Id$
+Changes
+Makefile.PL
 lib/Iterate.pm
 lib/Tester.pm
-Makefile.PL
-MANIFEST
-t/load.t
-t/import.t
 t/check_arg.t
-t/iterate.t
 t/grep.t
+t/import.t
+t/iterate.t
+t/load.t
 t/map.t
+t/pod.t
+t/prereq.t
+t/test_manifest
+t/tester.t
