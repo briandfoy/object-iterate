@@ -1,2 +1,7 @@
 # $Id$
 
+0.51 - Wed Sep  8 02:27:16 2004
+* cleaned up the distro (where'd that MANIFEST hide?)
+* updated the tests and reduced the dependencies
+* no need to upgrade if you already have the module
+
