@@ -1,5 +1,6 @@
 load.t
 pod.t
+prereq.t
 import.t
 tester.t
 check_arg.t

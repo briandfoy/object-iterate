@@ -1,35 +1,25 @@
 # $Id$
-BEGIN { $| = 1; print "1..3\n"; }
-END   {print "not ok\n" unless $loaded;}
+
+use Test::More tests => 6;
 
 use Object::Iterate;
 use Object::Iterate::Tester;
-$loaded = 1;
-print "ok\n";
 
-eval {
-	die "Tester object didn't work!"
-		unless Object::Iterate::_check_object( 
-			Object::Iterate::Tester->new() );
-	};
-print STDERR $@ if $@;
-print $@ ? 'not ' : '', "ok\n";
+ok( Object::Iterate::_check_object(	
+	Object::Iterate::Tester->new() ),
+	'Tester object can use Object::Iterate' );
 
-eval {
-	die "Thought anonymous hash would work!"
-		if eval{ Object::Iterate::_check_object( {} ) };
+my $result = not eval{ Object::Iterate::_check_object( {} ) };
+ok( $result, "Thought anonymous hash would work!" );
 
-	die "Thought anonymous array would work!"
-		if eval{ Object::Iterate::_check_object( [] ) };
+$result = not eval{ Object::Iterate::_check_object( [] ) };
+ok( $result, "Thought anonymous array would work!" );
 
-	die "Thought blessed hash would work!"
-		if eval{ Object::Iterate::_check_object( bless {}, 'Foo' ) };
+$result = not eval{ Object::Iterate::_check_object( bless {}, 'Foo' ) };
+ok( $result, "Thought blessed hash would work!" );
 
-	die "Thought undef would work!"
-		if eval{ Object::Iterate::_check_object( undef ) };
+$result = not eval{ Object::Iterate::_check_object( undef ) };
+ok( $result, "Thought undef would work!" );
 
-	die "Thought empty arg list would work!"
-		if eval{ Object::Iterate::_check_object( ) };
-	};
-print STDERR $@ if $@;
-print $@ ? 'not ' : '', "ok\n";
+$result = not eval{ Object::Iterate::_check_object( ) };
+ok( $result, "Thought empty arg list would work!" );
