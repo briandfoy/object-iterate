@@ -16,7 +16,6 @@ my @o2 = imap { $_ } $o;
 ok( eq_array( \@o2, [2..9] ), 
 	'imap returns the right items on the second try' );
 
-
 BEGIN 
 	{
 	package O;
