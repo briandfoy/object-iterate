@@ -1,0 +1,11 @@
+# $Id$
+lib/Iterate.pm
+lib/Tester.pm
+Makefile.PL
+MANIFEST
+t/load.t
+t/import.t
+t/check_arg.t
+t/iterate.t
+t/grep.t
+t/map.t
