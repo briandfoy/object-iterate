@@ -1,5 +1,9 @@
 # $Id$
 
+0.52 - Fri Mar 11 22:24:15 2005
+	* Added POD coverage tests, fixed issues
+	* No code updates: no need to upgrade
+
 0.51 - Fri Mar 11 22:12:48 2005
 	* Added POD coverage tests and fixed those problems
 	* No code changes: no need to upgrade
