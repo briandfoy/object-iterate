@@ -1,7 +1,5 @@
 # $Id$
-
-use Test::More tests => 1;
-use Test::Prereq;
-
-print "bail out! Makefile.PL needs help!"
-	unless prereq_ok();
+use Test::More;
+eval "use Test::Prereq";
+plan skip_all => "Test::Prereq required to test dependencies" if $@;
+prereq_ok();

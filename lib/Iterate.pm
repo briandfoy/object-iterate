@@ -3,24 +3,24 @@ package Object::Iterate;
 use strict;
 
 use subs qw(_check_object);
-use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS 
+use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS
 	$Next $More $Init $Final
 	);
 
 =head1 NAME
 
 Object::Iterate - iterators for objects that know the next element
-	
+
 =head1 SYNOPSIS
 
 	use Object::Iterate qw(iterate igrep imap);
-	
+
 	iterate {...} $object;
-	
+
 	my @filtered    = igrep {...} $object;
-	
+
 	my @transformed = imap {...} $object;
-	
+
 =head1 DESCRIPTION
 
 This module provides control structures to iterate through the
@@ -38,7 +38,7 @@ The control structure continues until
 the __more__ method returns FALSE (which does not mean that it
 visited all of the elements but that the object has decided to
 stop iterating).  At the end of all iterations (when __more__
-returns false), Object::Iterate calls __final__ if it exists, 
+returns false), Object::Iterate calls __final__ if it exists,
 and skips it otherwise.
 
 Each control structure sets $_ to the current element, just like
@@ -73,7 +73,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = '0.05';
+$VERSION     = '0.51';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
@@ -90,9 +90,9 @@ sub _check_object
 		unless UNIVERSAL::can( $_[0], $Next );
 	croak( "iterate object has no $More() method" )
 		unless UNIVERSAL::can( $_[0], $More );
-		
+
 	$_[0]->$Init if UNIVERSAL::can( $_[0], $Init );
-	
+
 	return 1;
 	}
 
@@ -103,14 +103,14 @@ sub _check_object
 Applies BLOCK to each item returned by ODJECT->__next__.
 
 	iterate { print "$_\n" } $object;
-	
+
 This is the same thing as using a while loop, but iterate()
 stays out of your way.
 
 	while( $object->__more__ )
 		{
 		local $_ = $object->__next__;
-		
+
 		...BLOCK...
 		}
 =cut
@@ -121,13 +121,13 @@ sub iterate (&$)
 	my $object = shift;
 
 	_check_object( $object );
-	
+
 	while( $object->$More )
 		{
 		local $_;
-		
+
 		$_ = $object->$Next;
-		
+
 		$sub->();
 		}
 
@@ -140,14 +140,14 @@ Applies BLOCK to each item returned by ODJECT->__next__, and returns
 all of the elements for which the BLOCK returns TRUE.
 
 	my $output = igrep { print "$_\n" } $object;
-	
+
 This is a grep for something that cannot be represented as a
 list at one time.
 
 	while( $object->__more__ )
 		{
 		local $_ = $object->__next__;
-		
+
 		push @output, $_ if ...BLOCK...;
 		}
 
@@ -157,22 +157,22 @@ sub igrep (&$)
 	{
 	my $sub    = shift;
 	my $object = shift;
-	
+
 	_check_object( $object );
-	
+
 	my @output = ();
-		
+
 	while( $object->$More )
 		{
 		local $_;
-		
+
 		$_ = $object->$Next;
-		
+
 		push @output, $_ if $sub->();
 		}
 
 	$object->$Final if $object->can( $Final );
-	
+
 	wantarray ? @output : scalar @output;
 	}
 
@@ -182,14 +182,14 @@ Applies BLOCK to each item returned by ODJECT->__next__, and returns
 the combined lists that BLOCK returns for each of the elements.
 
 	my $output = imap { print "$_\n" } $object;
-	
+
 This is a map for something that cannot be represented as a
 list at one time.
 
 	while( $object->$More )
 		{
 		local $_ = $object->__next__;
-		
+
 		push @output, ...BLOCK...;
 		}
 
@@ -199,17 +199,17 @@ sub imap (&$)
 	{
 	my $sub    = shift;
 	my $object = shift;
-	
+
 	_check_object( $object );
-		
+
 	my @output = ();
-		
+
 	while( $object->$More )
 		{
 		local $_;
-		
+
 		$_ = $object->$Next;
-		
+
 		push @output, $sub->();
 		}
 
@@ -243,8 +243,8 @@ $Object::Iterate::Next.
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
-	
+	http://sourceforge.net/projects/brian-d-foy/
+
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
 
@@ -258,7 +258,7 @@ Thanks to Slaven Rezic for adding __init__ support
 
 =head1 AUTHOR
 
-brian d foy, E<lt>bdfoy@cpan.orgE<gt>.
+brian d foy, C<< <bdfoy@cpan.org> >>.
 
 =head1 COPYRIGHT and LICENSE
 

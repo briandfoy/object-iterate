@@ -1,3 +1,4 @@
+README
 Changes
 Makefile.PL
 lib/Iterate.pm
@@ -12,3 +13,4 @@ t/pod.t
 t/prereq.t
 t/test_manifest
 t/tester.t
+META.yml                                 Module meta-data (added by MakeMaker)
