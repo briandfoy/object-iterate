@@ -7,3 +7,5 @@ check_arg.t
 grep.t
 map.t
 iterate.t
+init.t
+final.t

@@ -3,7 +3,9 @@ package Object::Iterate;
 use strict;
 
 use subs qw(_check_object);
-use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS $Next $More);
+use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS 
+	$Next $More $Init $Final
+	);
 
 =head1 NAME
 
@@ -11,13 +13,13 @@ Object::Iterate - iterators for objects that know the next element
 	
 =head1 SYNOPSIS
 
-use Object::Iterate;
-
-iterate {...} $object;
-
-my @filtered    = igrep {...} $object;
-
-my @transformed = imap {...} $object;
+	use Object::Iterate qw(iterate igrep imap);
+	
+	iterate {...} $object;
+	
+	my @filtered    = igrep {...} $object;
+	
+	my @transformed = imap {...} $object;
 	
 =head1 DESCRIPTION
 
@@ -30,21 +32,33 @@ they cannot turn themselves into a list.
 If the object can return the next object, it can use this module.
 Iterate assumes that the object responds to __next__ with the
 next element, and to __more__ with TRUE or FALSE if more elements
-remain to be processed.  The control structure continues until
+remain to be processed.  The __init__ method is called before the
+first iteration if it exists, and silently skipped otherwise.
+The control structure continues until
 the __more__ method returns FALSE (which does not mean that it
 visited all of the elements but that the object has decided to
-stop iterating).
+stop iterating).  At the end of all iterations (when __more__
+returns false), Object::Iterate calls __final__ if it exists, 
+and skips it otherwise.
 
 Each control structure sets $_ to the current element, just like
 foreach, map, and grep.
 
 =head2  Mutable method names
 
-You do not really have to use the __next__ and __more__ names.
-They are just the defaults which Iterate stores in $Iterate::Next
-and $Iterate::More, respectively.  If your object does not have
-the specified methods, the functions will die.  You may want to
-wrap them in eval blocks.
+You do not really have to use the __next__, __more__,
+__init__, or __final__ names. They are just the defaults
+which Iterate stores in the package variables $Next, $More,
+$Init, and $Final respectively.  This module does not export
+these variables, so you need to use the full package specification
+to change them (i.e. $Object::Iterate::$Next). If your object does not
+have the specified methods, the functions will die.  You may
+want to wrap them in eval blocks.
+
+Since this module uses package variables to storethese methods names,
+the method names apply to every use of the functions no matter the
+object.  You might want to local()-ise the variables for different
+objects.
 
 Before any control structure does its job, it checks the object to
 see if it can respond to these two methods, whatever you decide
@@ -59,13 +73,16 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
+$VERSION     = '0.05';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
 	);
 
-$Next = '__next__';
-$More = '__more__';
+$Next  = '__next__';
+$More  = '__more__';
+$Init  = '__init__';
+$Final = '__final__';
 
 sub _check_object
 	{
@@ -74,6 +91,8 @@ sub _check_object
 	croak( "iterate object has no $More() method" )
 		unless UNIVERSAL::can( $_[0], $More );
 		
+	$_[0]->$Init if UNIVERSAL::can( $_[0], $Init );
+	
 	return 1;
 	}
 
@@ -100,9 +119,9 @@ sub iterate (&$)
 	{
 	my $sub    = shift;
 	my $object = shift;
-	
+
 	_check_object( $object );
-		
+	
 	while( $object->$More )
 		{
 		local $_;
@@ -111,6 +130,8 @@ sub iterate (&$)
 		
 		$sub->();
 		}
+
+	$object->$Final if $object->can( $Final );
 	}
 
 =item igrep BLOCK, OBJECT
@@ -140,7 +161,7 @@ sub igrep (&$)
 	_check_object( $object );
 	
 	my @output = ();
-	
+		
 	while( $object->$More )
 		{
 		local $_;
@@ -149,6 +170,8 @@ sub igrep (&$)
 		
 		push @output, $_ if $sub->();
 		}
+
+	$object->$Final if $object->can( $Final );
 	
 	wantarray ? @output : scalar @output;
 	}
@@ -180,7 +203,7 @@ sub imap (&$)
 	_check_object( $object );
 		
 	my @output = ();
-	
+		
 	while( $object->$More )
 		{
 		local $_;
@@ -189,6 +212,8 @@ sub imap (&$)
 		
 		push @output, $sub->();
 		}
+
+	$object->$Final if $object->can( $Final );
 
 	@output;
 	}
@@ -202,16 +227,26 @@ sub imap (&$)
 =item iterate object has no __more__() method at script line N
 
 You need to provide the method to let Object::Iterate determine if
-more elements are available.  You don't have to call it more if you
+more elements are available.  You don't have to call it __more__ if you
 change the value of $Object::Iterate::More.
 
 =item iterate object has no __next__() method at script line N
 
 You need to provide the method to let Object::Iterate fetch the next
-element.  You don't have to call it more if you change the value of
+element.  You don't have to call it __next__ if you change the value of
 $Object::Iterate::Next.
 
 =back
+
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
 
 =head1 TO DO
 
