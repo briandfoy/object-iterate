@@ -73,7 +73,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = '0.52';
+$VERSION     = '0.53';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
@@ -100,7 +100,7 @@ sub _check_object
 
 =item iterate BLOCK, OBJECT
 
-Applies BLOCK to each item returned by ODJECT->__next__.
+Applies BLOCK to each item returned by OBJECT->__next__.
 
 	iterate { print "$_\n" } $object;
 
@@ -136,7 +136,7 @@ sub iterate (&$)
 
 =item igrep BLOCK, OBJECT
 
-Applies BLOCK to each item returned by ODJECT->__next__, and returns
+Applies BLOCK to each item returned by OBJECT->__next__, and returns
 all of the elements for which the BLOCK returns TRUE.
 
 	my $output = igrep { print "$_\n" } $object;
@@ -178,7 +178,7 @@ sub igrep (&$)
 
 =item imap BLOCK, OBJECT
 
-Applies BLOCK to each item returned by ODJECT->__next__, and returns
+Applies BLOCK to each item returned by OBJECT->__next__, and returns
 the combined lists that BLOCK returns for each of the elements.
 
 	my $output = imap { print "$_\n" } $object;
@@ -262,7 +262,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>.
 
 =head1 COPYRIGHT and LICENSE
 
-Copyright 2002-2005, brian d foy.
+Copyright 2002-2006, brian d foy.
 
 This software is available under the same terms as perl.
 
