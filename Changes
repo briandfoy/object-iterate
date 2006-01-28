@@ -1,5 +1,9 @@
 # $Id$
 
+0.53 - Sat Jan 28 12:34:59 2006
+	* Fixed some typoes, upgraded the Test::Manifest use in Makefile.PL
+	* No need to upgrade if you already have Object::Iterate
+
 0.52 - Fri Mar 11 22:24:15 2005
 	* Added POD coverage tests, fixed issues
 	* No code updates: no need to upgrade
