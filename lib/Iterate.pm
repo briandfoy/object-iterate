@@ -24,47 +24,46 @@ Object::Iterate - iterators for objects that know the next element
 =head1 DESCRIPTION
 
 This module provides control structures to iterate through the
-elements of an object that cannot be represented as list of
-items all at once.  Objects can represent a virtual collection
-that is beyond the reaches of foreach, map, and grep because
-they cannot turn themselves into a list.
+elements of an object that cannot be represented as list of items all
+at once.  Objects can represent a virtual collection that is beyond
+the reaches of foreach, map, and grep because they cannot turn
+themselves into a list.
 
-If the object can return the next object, it can use this module.
-Iterate assumes that the object responds to __next__ with the
-next element, and to __more__ with TRUE or FALSE if more elements
-remain to be processed.  The __init__ method is called before the
-first iteration if it exists, and silently skipped otherwise.
-The control structure continues until
-the __more__ method returns FALSE (which does not mean that it
-visited all of the elements but that the object has decided to
-stop iterating).  At the end of all iterations (when __more__
-returns false), Object::Iterate calls __final__ if it exists,
-and skips it otherwise.
+If the object can return a next element, it can use this module.
+Iterate assumes that the object responds to C<__next__> with the next
+element, and to C<__more__> with TRUE or FALSE if more elements remain
+to be processed.  The C<__init__> method is called before the first
+iteration (if it exists), and is silently skipped otherwise. The
+control structure continues until the C<__more__> method returns FALSE
+(which does not mean that it visited all of the elements but that the
+object has decided to stop iterating).  At the end of all iterations
+(when C<__more__> returns false), C<Object::Iterate> calls
+C<__final__> if it exists, and skips it otherwise.
 
-Each control structure sets $_ to the current element, just like
+Each control structure sets C<$_> to the current element, just like
 foreach, map, and grep.
 
 =head2  Mutable method names
 
-You do not really have to use the __next__, __more__,
-__init__, or __final__ names. They are just the defaults
-which Iterate stores in the package variables $Next, $More,
-$Init, and $Final respectively.  This module does not export
-these variables, so you need to use the full package specification
-to change them (i.e. $Object::Iterate::$Next). If your object does not
-have the specified methods, the functions will die.  You may
-want to wrap them in eval blocks.
+You do not really have to use the C<__next__>, C<__more__>,
+C<__init__>, or C<__final__> names. They are just the defaults which
+<Object::Iterate> stores in the package variables C<$Next>, C<$More>,
+C<$Init>, and C<$Final> respectively.  This module does not export
+these variables, so you need to use the full package specification to
+change them (I<i.e.> C<$Object::Iterate::$Next>). If your object does
+not have the specified methods, the functions will die.  You may want
+to wrap them in eval blocks.
 
 Since this module uses package variables to storethese methods names,
 the method names apply to every use of the functions no matter the
 object.  You might want to local()-ise the variables for different
 objects.
 
-Before any control structure does its job, it checks the object to
-see if it can respond to these two methods, whatever you decide
-to call them, so your object must know that it can respond to
-these methods.  AUTOLOADed methods cannot work since the module
-cannot know if they exist.
+Before any control structure does its job, it checks the object to see
+if it can respond to these two methods, whatever you decide to call
+them, so your object must know that it can respond to these methods. 
+AUTOLOADed methods cannot work since the module cannot know if they
+exist.
 
 =cut
 
@@ -100,11 +99,11 @@ sub _check_object
 
 =item iterate BLOCK, OBJECT
 
-Applies BLOCK to each item returned by OBJECT->__next__.
+Applies BLOCK to each item returned by C<OBJECT->__next__>.
 
 	iterate { print "$_\n" } $object;
 
-This is the same thing as using a while loop, but iterate()
+This is the same thing as using a while loop, but C<iterate()>
 stays out of your way.
 
 	while( $object->__more__ )
@@ -136,7 +135,7 @@ sub iterate (&$)
 
 =item igrep BLOCK, OBJECT
 
-Applies BLOCK to each item returned by OBJECT->__next__, and returns
+Applies BLOCK to each item returned by C<OBJECT->__next__>, and returns
 all of the elements for which the BLOCK returns TRUE.
 
 	my $output = igrep { print "$_\n" } $object;
@@ -178,7 +177,7 @@ sub igrep (&$)
 
 =item imap BLOCK, OBJECT
 
-Applies BLOCK to each item returned by OBJECT->__next__, and returns
+Applies BLOCK to each item returned by C<OBJECT->__next__>, and returns
 the combined lists that BLOCK returns for each of the elements.
 
 	my $output = imap { print "$_\n" } $object;
@@ -224,17 +223,17 @@ sub imap (&$)
 
 =over 4
 
-=item iterate object has no __more__() method at script line N
+=item iterate object has no C<__more__()> method at script line N
 
-You need to provide the method to let Object::Iterate determine if
-more elements are available.  You don't have to call it __more__ if you
-change the value of $Object::Iterate::More.
+You need to provide the method to let C<Object::Iterate> determine if
+more elements are available.  You don't have to call it C<__more__> if you
+change the value of C<$Object::Iterate::More>.
 
-=item iterate object has no __next__() method at script line N
+=item iterate object has no C<__next__()> method at script line N
 
 You need to provide the method to let Object::Iterate fetch the next
-element.  You don't have to call it __next__ if you change the value of
-$Object::Iterate::Next.
+element.  You don't have to call it C<__next__> if you change the value of
+C<$Object::Iterate::Next>.
 
 =back
 
@@ -254,7 +253,7 @@ members of the project can shepherd this module appropriately.
 
 =head1 CREDITS
 
-Thanks to Slaven Rezic for adding __init__ support
+Thanks to Slaven Rezic for adding C<__init__> support
 
 =head1 AUTHOR
 

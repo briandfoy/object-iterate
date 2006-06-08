@@ -1,12 +1,14 @@
-.cvsignore
-.releaserc
+\.lwpcookies
+\.cvsignore
+\.releaserc
 Makefile$
 .DS_Store
 .*gz
 Object-Iterate-.*
-MANIFEST.*
+MANIFEST\.
 blib/
 CVS
 pm_to_blib
 iterate-new.t
 Makefile.old
+\.bak
