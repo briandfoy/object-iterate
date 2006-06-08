@@ -1,5 +1,9 @@
 # $Id$
 
+1.09 - Thu Jun  8 06:41:22 2006
+	* distro cleanups, bumped version number to stable release.
+	No need to upgrade.
+
 0.53 - Sat Jan 28 12:34:59 2006
 	* Fixed some typoes, upgraded the Test::Manifest use in Makefile.PL
 	* No need to upgrade if you already have Object::Iterate
