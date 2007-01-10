@@ -1,5 +1,9 @@
 # $Id$
 
+1.10 - Tue Jan  9 22:38:03 2007
+	* updated copyright and license info
+	* no code changes, so no need to upgrade
+
 1.09 - Thu Jun  8 06:41:22 2006
 	* distro cleanups, bumped version number to stable release.
 	No need to upgrade.
