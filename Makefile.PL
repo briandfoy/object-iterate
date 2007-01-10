@@ -7,6 +7,7 @@ WriteMakefile
 	(
 	'NAME'           => 'Object::Iterate',
 	'VERSION_FROM'   => 'lib/Iterate.pm',
+	'LICENSE'       => 'perl',
 	'PM'             => {
 		'lib/Iterate.pm'    => '$(INST_LIBDIR)/Iterate.pm',
 		'lib/Tester.pm'     => '$(INST_LIBDIR)/Iterate/Tester.pm',

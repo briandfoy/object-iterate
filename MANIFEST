@@ -1,6 +1,7 @@
 Changes
 lib/Iterate.pm
 lib/Tester.pm
+LICENSE
 Makefile.PL
 MANIFEST
 META.yml			Module meta-data (added by MakeMaker)

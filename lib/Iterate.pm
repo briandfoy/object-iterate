@@ -259,11 +259,12 @@ Thanks to Slaven Rezic for adding C<__init__> support
 
 brian d foy, C<< <bdfoy@cpan.org> >>.
 
-=head1 COPYRIGHT and LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2006, brian d foy.
+Copyright (c) 2002-2007 brian d foy.  All rights reserved.
 
-This software is available under the same terms as perl.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 
