@@ -2,6 +2,9 @@
 package Object::Iterate;
 use strict;
 
+use warnings;
+no warnings;
+
 use subs qw(_check_object);
 use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS
 	$Next $More $Init $Final
@@ -72,7 +75,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = sprintf "%d.%02d", q$Revision$ =~ m/(\d+) \. (\d+)/xg;
+$VERSION     = 1.11;
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,

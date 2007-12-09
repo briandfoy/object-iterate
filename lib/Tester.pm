@@ -1,6 +1,9 @@
 package Object::Iterate::Tester;
 use strict;
 
+use warnings;
+no warnings;
+
 =head1 NAME
 
 Object::Iterate::Tester - test module that uses Object::Iterate

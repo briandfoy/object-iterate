@@ -5,7 +5,6 @@ lib/Tester.pm
 LICENSE
 Makefile.PL
 MANIFEST
-META.yml			Module meta-data (added by MakeMaker)
 README
 t/check_arg.t
 t/final.t
