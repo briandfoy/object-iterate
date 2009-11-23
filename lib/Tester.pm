@@ -1,6 +1,8 @@
 package Object::Iterate::Tester;
 use strict;
 
+use vars qw($VERSION);
+
 use warnings;
 no warnings;
 
@@ -21,6 +23,12 @@ Object::Iterate::Tester - test module that uses Object::Iterate
 
 =head1 DESCRIPTION
 
+=head1 SOURCE
+
+This module is on Github:
+
+	http://github.com/briandfoy/Object-Iterate
+	
 =head1 AUTHOR
 
 brian d foy, C<< <bdfoy@cpan.org> >>
