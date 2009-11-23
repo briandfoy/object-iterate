@@ -1,4 +1,3 @@
-# $Id$
 package Object::Iterate;
 use strict;
 
@@ -75,7 +74,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = 1.11;
+$VERSION     = '1.12';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,

@@ -1,5 +1,3 @@
-# $Id$
-
 use Test::More tests => 3;
 use Test::Data qw(Function);
 

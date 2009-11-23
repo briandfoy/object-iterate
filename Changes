@@ -1,5 +1,3 @@
-# $Id$
-
 1.11 - Sun Dec  9 01:08:19 2007
 	* Cleanups for the move from CVS to SVN
 	* No need to upgrade
@@ -25,7 +23,7 @@
 	* No code changes: no need to upgrade
 
 0.51 - Wed Sep  8 02:27:16 2004
-* cleaned up the distro (where'd that MANIFEST hide?)
-* updated the tests and reduced the dependencies
-* no need to upgrade if you already have the module
+	* cleaned up the distro (where'd that MANIFEST hide?)
+	* updated the tests and reduced the dependencies
+	* no need to upgrade if you already have the module
 

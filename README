@@ -1,5 +1,3 @@
-$Id$
-
 You can install this using in the usual Perl fashion
 
 	perl Makefile.PL
@@ -19,8 +17,7 @@ perldoc directly on the module file.
 	
 This module is also in CVS on SourceForge
 
-	http://sourceforge.net/projects/brian-d-foy/
-
+	http://github.com/briandfoy/Object-Iterate
 
 Enjoy, 
 

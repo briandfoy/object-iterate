@@ -1,5 +1,3 @@
-# $Id$
-
 use Test::More tests => 6;
 
 use Object::Iterate;

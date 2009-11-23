@@ -4,6 +4,8 @@ use strict;
 use warnings;
 no warnings;
 
+$VERSION     = '1.12';
+
 =head1 NAME
 
 Object::Iterate::Tester - test module that uses Object::Iterate

@@ -1,4 +1,3 @@
-# $Id$
 BEGIN {
 	@classes = qw(Object::Iterate Object::Iterate::Tester);
 	}
