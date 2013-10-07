@@ -22,5 +22,11 @@ WriteMakefile
 		'Test::More'       => '0',
 		},
 
+	'META_MERGE'      => {
+		'resources' => {
+			'repository' => 'https://github.com/briandfoy/Object-Iterate',
+		},
+	},
+
 	clean => { FILES => 'Object-Iterate-*' },
 	);
