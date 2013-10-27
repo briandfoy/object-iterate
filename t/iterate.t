@@ -1,6 +1,6 @@
 use strict;
 
-use Test::More tests => 2;
+use Test::More;
 
 use Object::Iterate qw(iterate);
 
@@ -22,3 +22,5 @@ BEGIN {
 	sub __next__ { $_[0]{A}[ $_[0]{Pos}++ ]          }
 	sub __more__ { $_[0]{Pos} > $#{ $_[0]{A} } ? 0 : 1 }
 	}
+
+done_testing();

@@ -1,6 +1,6 @@
 use strict;
 
-use Test::More tests => 2;
+use Test::More;
 
 use Object::Iterate qw(imap);
 
@@ -10,8 +10,7 @@ ok( eq_array( \@o1, [1..9] ),
 	'imap returns the right items on the first try' );
 is( $o->{Array}, 'Done!', '__final__ did the right thing' );
 
-BEGIN 
-	{
+BEGIN {
 	package O;
 	
 	sub new { my $c = shift; 
@@ -20,3 +19,5 @@ BEGIN
 	sub __next__  { $_[0]->{Array}[$_[0]->{Pos}++] }
 	sub __final__ { $_[0]->{Array} = 'Done!' }
 	}
+
+done_testing();

@@ -1,4 +1,4 @@
-use Test::More tests => 2;
+use Test::More;
 
 use Object::Iterate qw(imap);
 use Object::Iterate::Tester;
@@ -12,3 +12,4 @@ my @expected = qw( A B C D E F );
 
 ok( eq_array( \@O, \@expected ), 'imap outputs right results' );
 
+done_testing();

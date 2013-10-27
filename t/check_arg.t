@@ -1,4 +1,4 @@
-use Test::More tests => 6;
+use Test::More;
 
 use Object::Iterate;
 use Object::Iterate::Tester;
@@ -21,3 +21,5 @@ ok( $result, "Thought undef would work!" );
 
 $result = not eval{ Object::Iterate::_check_object( ) };
 ok( $result, "Thought empty arg list would work!" );
+
+done_testing();

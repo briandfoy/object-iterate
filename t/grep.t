@@ -1,4 +1,4 @@
-use Test::More tests => 2;
+use Test::More;
 
 use Object::Iterate qw(igrep);
 use Object::Iterate::Tester;
@@ -12,3 +12,5 @@ my %Vowels = map { $_, 1 } @expected;
 my @O = igrep { exists $Vowels{$_} } $o;
 
 ok( eq_array( \@O, \@expected ), "igrep gives the right results" );
+
+done_testing();

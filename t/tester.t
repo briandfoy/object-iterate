@@ -1,4 +1,4 @@
-use Test::More tests => 15;
+use Test::More;
 
 use Object::Iterate;
 use Object::Iterate::Tester;
@@ -8,8 +8,7 @@ isa_ok( $o, 'Object::Iterate::Tester' );
 can_ok( $o, $Object::Iterate::More );
 can_ok( $o, $Object::Iterate::Next );
 
-foreach ( qw(a b c d e) )
-	{
+foreach ( qw(a b c d e) ) {
 	is( $o->$Object::Iterate::Next, $_, 'Fetched right element' );
 	ok( $o->$Object::Iterate::More, 'Object has more elements' );
 	}
@@ -17,3 +16,5 @@ foreach ( qw(a b c d e) )
 is( $o->$Object::Iterate::Next, 'f', 'Fetched right element' );
 my $more = not $o->$Object::Iterate::More;
 ok( $more, 'Object has no more elements' );
+
+done_testing();

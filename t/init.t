@@ -1,6 +1,6 @@
 use strict;
 
-use Test::More tests => 2;
+use Test::More;
 
 use Object::Iterate qw(imap);
 
@@ -24,3 +24,5 @@ BEGIN
 	sub __more__ { $_[0]->{Pos} < @{ $_[0]->{Array} } }
 	sub __next__ { $_[0]->{Array}[$_[0]->{Pos}++] }
 	}
+
+done_testing();
