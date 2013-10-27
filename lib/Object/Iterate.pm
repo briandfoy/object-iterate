@@ -85,8 +85,7 @@ $More  = '__more__';
 $Init  = '__init__';
 $Final = '__final__';
 
-sub _check_object
-	{
+sub _check_object {
 	croak( "iterate object has no $Next() method" )
 		unless UNIVERSAL::can( $_[0], $Next );
 	croak( "iterate object has no $More() method" )
@@ -116,23 +115,21 @@ stays out of your way.
 		}
 =cut
 
-sub iterate (&$)
-	{
+sub iterate (&$) {
 	my $sub    = shift;
 	my $object = shift;
 
 	_check_object( $object );
 
-	while( $object->$More )
-		{
+	while( $object->$More() ) {
 		local $_;
 
-		$_ = $object->$Next;
+		$_ = $object->$Next();
 
 		$sub->();
 		}
 
-	$object->$Final if $object->can( $Final );
+	$object->$Final() if $object->can( $Final );
 	}
 
 =item igrep BLOCK, OBJECT
@@ -154,8 +151,7 @@ list at one time.
 
 =cut
 
-sub igrep (&$)
-	{
+sub igrep (&$) {
 	my $sub    = shift;
 	my $object = shift;
 
