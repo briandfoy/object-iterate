@@ -87,11 +87,11 @@ $Final = '__final__';
 
 sub _check_object {
 	croak( "iterate object has no $Next() method" )
-		unless UNIVERSAL::can( $_[0], $Next );
+		unless eval { $_[0]->can( $Next ) };
 	croak( "iterate object has no $More() method" )
-		unless UNIVERSAL::can( $_[0], $More );
+		unless eval { $_[0]->can( $More ) };
 
-	$_[0]->$Init if UNIVERSAL::can( $_[0], $Init );
+	$_[0]->$Init() if eval { $_[0]->can( $Init ) };
 
 	return 1;
 	}
@@ -159,16 +159,16 @@ sub igrep (&$) {
 
 	my @output = ();
 
-	while( $object->$More )
+	while( $object->$More() )
 		{
 		local $_;
 
-		$_ = $object->$Next;
+		$_ = $object->$Next();
 
 		push @output, $_ if $sub->();
 		}
 
-	$object->$Final if $object->can( $Final );
+	$object->$Final() if $object->can( $Final );
 
 	wantarray ? @output : scalar @output;
 	}
