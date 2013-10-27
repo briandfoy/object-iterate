@@ -1,9 +1,7 @@
 Changes
 examples/README
-lib/Iterate.pm
 lib/Object/Iterate.pm
 lib/Object/Iterate/Tester.pm
-lib/Tester.pm
 LICENSE
 Makefile.PL
 MANIFEST
