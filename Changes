@@ -1,5 +1,8 @@
 # Changes for Object::Iterate
 
+1.13 - Sun Oct 27 13:27:21 2013
+	* I changed my mind on some source code formatting
+
 1.11 - Sun Dec  9 01:08:19 2007
 	* Cleanups for the move from CVS to SVN
 	* No need to upgrade
