@@ -74,7 +74,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = '1.13_01';
+$VERSION     = '1.14';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
@@ -256,7 +256,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2002-2013 brian d foy.  All rights reserved.
+Copyright (c) 2002-2015 brian d foy.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

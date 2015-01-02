@@ -22,9 +22,7 @@
 Build
 Build.bat
 MYMETA*
-Makefile
 _build/
-blib
 cover_db/
 inc/
 nytprof.out
