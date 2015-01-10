@@ -59,7 +59,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean => { FILES => 'Object-Iterate-*' },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
