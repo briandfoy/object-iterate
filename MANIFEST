@@ -1,0 +1,22 @@
+.travis.yml
+Changes
+examples/README
+lib/Object/Iterate.pm
+lib/Object/Iterate/Tester.pm
+LICENSE
+Makefile.PL
+MANIFEST			This list of files
+README.pod
+t/check_arg.t
+t/final.t
+t/grep.t
+t/import.t
+t/init.t
+t/iterate.t
+t/load.t
+t/map.t
+t/pod.t
+t/pod_coverage.t
+t/test_manifest
+t/tester.t
+xt/changes.t
