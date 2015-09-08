@@ -8,6 +8,8 @@ no warnings;
 
 $VERSION     = '1.14';
 
+=encoding utf8
+
 =head1 NAME
 
 Object::Iterate::Tester - test module that uses Object::Iterate
@@ -28,7 +30,7 @@ Object::Iterate::Tester - test module that uses Object::Iterate
 This module is on Github:
 
 	http://github.com/briandfoy/Object-Iterate
-	
+
 =head1 AUTHOR
 
 brian d foy, C<< <bdfoy@cpan.org> >>

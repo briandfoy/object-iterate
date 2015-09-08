@@ -9,6 +9,8 @@ use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS
 	$Next $More $Init $Final
 	);
 
+=encoding utf8
+
 =head1 NAME
 
 Object::Iterate - iterators for objects that know the next element
@@ -63,7 +65,7 @@ objects.
 
 Before any control structure does its job, it checks the object to see
 if it can respond to these two methods, whatever you decide to call
-them, so your object must know that it can respond to these methods. 
+them, so your object must know that it can respond to these methods.
 AUTOLOADed methods cannot work since the module cannot know if they
 exist.
 
