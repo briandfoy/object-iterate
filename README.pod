@@ -4,10 +4,14 @@
 
 =head1 The Object::Iterate module
 
-This is the I<README> for the L<Object::Iterate> Perl module. You're probably 
-looking at this because you don't know where else to find what you're
-looking for. Read this once and you might never have to read one again 
-for any Perl module.
+This is the I<README> for the L<Object::Iterate> Perl module. You're
+probably looking at this because you don't know where else to find
+what you're looking for. Read this once and you might never have to
+read one again for any Perl module.
+
+I wrote this while playing with ways to visit all the parts of an
+object's data structure. It's more of a demonstration than something I
+expect you to use. Steal the code and inline it.
 
 =head2 Documentation
 
