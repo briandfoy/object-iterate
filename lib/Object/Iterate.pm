@@ -76,7 +76,7 @@ use Exporter;
 
 @ISA         = qw(Exporter);
 @EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = '1.14';
+$VERSION     = '1.141';
 
 %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
