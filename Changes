@@ -1,5 +1,8 @@
 Revision history for Perl module Object::Iterate
 
+1.141 2018-04-03T19:55:21Z
+	* Change to the Artistic License 2.0
+
 1.14 - 2014-10-08
 	* Bump to release version
 	* Get rid of prereq test, which now happens at release time
