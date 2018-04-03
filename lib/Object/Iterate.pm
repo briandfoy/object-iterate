@@ -261,7 +261,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>.
 Copyright © 2002-2018, brian d foy <bdfoy@cpan.org>. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+it under the terms of the Artistic License 2.0.
 
 =cut
 
