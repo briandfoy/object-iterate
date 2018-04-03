@@ -5,7 +5,8 @@ use warnings;
 no warnings;
 
 use subs qw(_check_object);
-use vars qw(@ISA $VERSION @EXPORT_OK %EXPORT_TAGS
+use vars qw(
+	@EXPORT_OK %EXPORT_TAGS
 	$Next $More $Init $Final
 	);
 
@@ -72,15 +73,14 @@ exist.
 =cut
 
 use Carp qw(croak);
-use Exporter;
-
-@ISA         = qw(Exporter);
-@EXPORT_OK   = qw(iterate igrep imap);
-$VERSION     = '1.141';
-
-%EXPORT_TAGS = (
+use Exporter qw(import);
+our @EXPORT_OK   = qw(iterate igrep imap);
+our %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
 	);
+
+our $VERSION     = '1.141';
+
 
 $Next  = '__next__';
 $More  = '__more__';
