@@ -83,17 +83,6 @@ my %WriteMakefile = (
 			},
 		},
 
-	'META_MERGE' => {
-        'meta-spec' => { version => 2 },
-		resources => {
-			repository => {
-				type => 'git',
-				url  => 'git@github.com:briandfoy/Object-Iterate.git',
-				web  => 'https://github.com/briandfoy/Object-Iterate',
-				},
-			},
-		},
-
 	clean => { FILES => "$dist-*" },
 	);
 
