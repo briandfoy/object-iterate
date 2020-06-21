@@ -106,7 +106,6 @@ stays out of your way.
 	while( $object->__more__ )
 		{
 		local $_ = $object->__next__;
-
 		...BLOCK...
 		}
 =cut
@@ -119,9 +118,7 @@ sub iterate :prototype(&$) {
 
 	while( $object->$More() ) {
 		local $_;
-
 		$_ = $object->$Next();
-
 		$sub->();
 		}
 
@@ -138,10 +135,8 @@ returns all of the elements for which the BLOCK returns TRUE.
 This is a grep for something that cannot be represented as a
 list at one time.
 
-	while( $object->__more__ )
-		{
+	while( $object->__more__ ) {
 		local $_ = $object->__next__;
-
 		push @output, $_ if ...BLOCK...;
 		}
 
@@ -155,12 +150,9 @@ sub igrep :prototype(&$) {
 
 	my @output = ();
 
-	while( $object->$More() )
-		{
+	while( $object->$More() ) {
 		local $_;
-
 		$_ = $object->$Next();
-
 		push @output, $_ if $sub->();
 		}
 
@@ -197,12 +189,9 @@ sub imap :prototype(&$) {
 
 	my @output = ();
 
-	while( $object->$More )
-		{
+	while( $object->$More ) {
 		local $_;
-
 		$_ = $object->$Next;
-
 		push @output, $sub->();
 		}
 
