@@ -111,7 +111,7 @@ stays out of your way.
 		}
 =cut
 
-sub iterate (&$) {
+sub iterate :prototype(&$) {
 	my $sub    = shift;
 	my $object = shift;
 
@@ -147,7 +147,7 @@ list at one time.
 
 =cut
 
-sub igrep (&$) {
+sub igrep :prototype(&$) {
 	my $sub    = shift;
 	my $object = shift;
 
@@ -189,8 +189,7 @@ list at one time.
 
 =cut
 
-sub imap (&$)
-	{
+sub imap :prototype(&$) {
 	my $sub    = shift;
 	my $object = shift;
 
