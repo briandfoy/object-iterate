@@ -4,12 +4,6 @@ use strict;
 use warnings;
 no warnings;
 
-use subs qw(_check_object);
-use vars qw(
-	@EXPORT_OK %EXPORT_TAGS
-	$Next $More $Init $Final
-	);
-
 =encoding utf8
 
 =head1 NAME
@@ -82,10 +76,10 @@ our %EXPORT_TAGS = (
 our $VERSION     = '1.142';
 
 
-$Next  = '__next__';
-$More  = '__more__';
-$Init  = '__init__';
-$Final = '__final__';
+our $Next  = '__next__';
+our $More  = '__more__';
+our $Init  = '__init__';
+our $Final = '__final__';
 
 sub _check_object {
 	croak( "iterate object has no $Next() method" )
