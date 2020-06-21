@@ -1,5 +1,5 @@
 package Object::Iterate;
-use strict;
+use v5.20;
 
 use warnings;
 no warnings;
@@ -73,7 +73,7 @@ our %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
 	);
 
-our $VERSION     = '1.142';
+our $VERSION     = '1.142_01';
 
 
 our $Next  = '__next__';
