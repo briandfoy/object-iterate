@@ -2,8 +2,6 @@
 
 =encoding utf8
 
-![linux](https://github.com/briandfoy/object-iterate/workflows/linux/badge.svg)
-
 =for HTML <img src="https://github.com/briandfoy/object-iterate/workflows/linux/badge.svg" />
 
 =for HTML <img src="https://github.com/briandfoy/object-iterate/workflows/macos/badge.svg" />

@@ -1,4 +1,4 @@
-name: linux
+name: ubuntu
 
 on:
     push:
@@ -10,9 +10,13 @@ on:
 
 jobs:
     perl:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
         strategy:
           matrix:
+            os:
+                - ubuntu-16.04
+                - ubuntu-18.04
+                - ubuntu-20.04
             perl-version:
                 - '5.8'
                 - '5.10'
@@ -30,15 +34,21 @@ jobs:
                 - 'latest'
 
         container:
-          image: perl:${{ matrix.perl-version }}
+            image: perl:${{ matrix.perl-version }}
 
         steps:
-          - uses: actions/checkout@v2
-          - name: perl -V
-            run: perl -V
-          - name: Install Dependencies
-            run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
-          - name: Run Tests
-            run: |
+            - uses: actions/checkout@v2
+            - name: Platform check
+              run: uname -a
+            - name: Perl version check
+              run: perl -V
+            - name: Prepare cpan
+              run: |
+                openssl version
+                cpan Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
+            - name: Install
+              run: cpan .
+            - name: Run tests
+              run: |
                 perl Makefile.PL
                 make test

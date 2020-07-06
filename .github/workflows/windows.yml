@@ -10,7 +10,12 @@ on:
 
 jobs:
     perl:
-        runs-on: windows-latest
+        runs-on: ${{ matrix.os }}
+        strategy:
+          matrix:
+            os:
+                - windows-2019
+                - windows-2016
 
         steps:
             - uses: actions/checkout@v2
@@ -18,11 +23,7 @@ jobs:
               run: |
                 choco install strawberryperl
                 echo "##[add-path]C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin"
-            - name: perl -V
+            - name: Perl version
               run: perl -V
-            - name: Install Dependencies
-              run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
-            - name: Run Tests
-              run: |
-                perl Makefile.PL
-                gmake test
+            - name: Install
+              run: cpan .
