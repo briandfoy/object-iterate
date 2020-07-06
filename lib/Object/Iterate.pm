@@ -49,7 +49,7 @@ C<__init__>, or C<__final__> names. They are just the defaults which
 <Object::Iterate> stores in the package variables C<$Next>, C<$More>,
 C<$Init>, and C<$Final> respectively.  This module does not export
 these variables, so you need to use the full package specification to
-change them (I<i.e.> C<$Object::Iterate::$Next>). If your object does
+change them (I<i.e.> C<$Object::Iterate::Next>). If your object does
 not have the specified methods, the functions will die.  You may want
 to wrap them in eval blocks.
 
