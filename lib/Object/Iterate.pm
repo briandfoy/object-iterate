@@ -167,7 +167,7 @@ Applies BLOCK to each item returned by C<< OBJECT->__next__ >>, and
 returns the combined lists that BLOCK returns for each of the
 elements.
 
-	my $output = imap { print "$_\n" } $object;
+	my @output = imap { print "$_\n" } $object;
 
 This is a map for something that cannot be represented as a
 list at one time.
