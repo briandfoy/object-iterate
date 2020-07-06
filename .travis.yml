@@ -45,6 +45,7 @@ install:
     - cpanm --quiet --notest Devel::Cover::Report::Coveralls
 
 script:
+    - perl Makefile.PL && make
     - cover -delete && cover -test
 
 after_success:
