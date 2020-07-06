@@ -1,5 +1,8 @@
 Revision history for Perl module Object::Iterate
 
+1.143_01 2020-07-06T04:22:39Z
+	* Support old and new prototypes at the same time
+
 1.143 2020-06-21T16:11:50Z
 	* Promote to a user release
 
