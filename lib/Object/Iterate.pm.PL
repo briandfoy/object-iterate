@@ -1,5 +1,22 @@
+open my $fh, '>:utf8', $ARGV[0]
+	or die 'Could not open file <$ARGV[0]>: $!';
+select( $fh );
+
+my $version = '5.020000';
+while( <DATA> ) {
+	if( m|\A###\s+\Q$version\E\s+///\s*(.*?)\s*///\s*(.*)| ) {
+		my $line = $] >= $version ? $1 : $2;
+		$line =~ s/\s*\z/\n/;
+		print $line;
+		}
+	else {
+		print;
+		}
+	}
+
+__END__
 package Object::Iterate;
-use v5.20;
+### 5.020000 /// use v5.20; /// use v5.008;
 
 use warnings;
 no warnings;
@@ -110,7 +127,7 @@ stays out of your way.
 		}
 =cut
 
-sub iterate :prototype(&$) {
+### 5.020000 /// sub iterate :prototype(&$) { /// sub iterate (&$) {
 	my $sub    = shift;
 	my $object = shift;
 
@@ -142,7 +159,7 @@ list at one time.
 
 =cut
 
-sub igrep :prototype(&$) {
+### 5.020000 /// sub igrep :prototype(&$) { /// sub igrep (&$) {
 	my $sub    = shift;
 	my $object = shift;
 
@@ -181,7 +198,7 @@ list at one time.
 
 =cut
 
-sub imap :prototype(&$) {
+### 5.020000 /// sub imap :prototype(&$) { /// sub imap (&$) {
 	my $sub    = shift;
 	my $object = shift;
 
