@@ -1,24 +1,45 @@
-open my $fh, '>:utf8', $ARGV[0]
-	or die 'Could not open file <$ARGV[0]>: $!';
-select( $fh );
+if( @ARGV ) {
+	open my $fh, '>:utf8', $ARGV[0]
+		or die 'Could not open file <$ARGV[0]>: $!';
+	select( $fh );
+	}
 
-my $version = '5.020000';
+my %CONFIG;
+$CONFIG{PROTOTYPE_ATTRIBUTE} = $] >= 5.020;
 
-while( <DATA> ) {
-	if( m|\A###\s+\Q$version\E\s+///\s*(.*?)\s*///\s*(.*)| ) {
-		my $line = $] >= $version ? $1 : $2;
-		$line =~ s/\s*\z/\n/;
-		print $line;
+LINE: while( <DATA> ) {
+	unless( /\A#ifdef\s+(\S+)/ ) { print; next; }
+	my $item = $1;
+	if( $CONFIG{$item} ) {
+		while(<DATA>) {
+			if( /\A#else/ ) {
+				while(<DATA>) { last if /\A#endif/ }
+				next LINE;
+				}
+			print;
+			}
 		}
 	else {
-		print;
+		while(<DATA>) { last if /\A#else/ }
+		while(<DATA>) {
+			last if /\A#endif\s*\z/;
+			print;
+			}
 		}
 	}
 
 __END__
 package Object::Iterate;
-### 5.020000 /// use v5.20; /// use v5.008;
+#ifdef PROTOTYPE_ATTRIBUTE
+use v5.20;
+#else
+use v5.008;
+die <<"HERE" if $] >= 5.020;
+Perl less than v5.20 required--this is $^V, stopped.
+HERE
+#endif
 
+use strict;
 use warnings;
 no warnings;
 
@@ -93,7 +114,6 @@ our %EXPORT_TAGS = (
 
 our $VERSION     = '1.143_02';
 
-
 our $Next  = '__next__';
 our $More  = '__more__';
 our $Init  = '__init__';
@@ -126,9 +146,14 @@ stays out of your way.
 		local $_ = $object->__next__;
 		...BLOCK...
 		}
+
 =cut
 
-### 5.020000 /// sub iterate :prototype(&$) { /// sub iterate (&$) {
+#ifdef PROTOTYPE_ATTRIBUTE
+sub iterate :prototype(&$) {
+#else
+sub iterate (&$) {
+#endif
 	my $sub    = shift;
 	my $object = shift;
 
@@ -160,7 +185,11 @@ list at one time.
 
 =cut
 
-### 5.020000 /// sub igrep :prototype(&$) { /// sub igrep (&$) {
+#ifdef PROTOTYPE_ATTRIBUTE
+sub igrep :prototype(&$) {
+#else
+sub igrep (&$) {
+#endif
 	my $sub    = shift;
 	my $object = shift;
 
@@ -199,7 +228,11 @@ list at one time.
 
 =cut
 
-### 5.020000 /// sub imap :prototype(&$) { /// sub imap (&$) {
+#ifdef PROTOTYPE_ATTRIBUTE
+sub imap :prototype(&$) {
+#else
+sub imap (&$) {
+#endif
 	my $sub    = shift;
 	my $object = shift;
 
