@@ -75,6 +75,6 @@ MANIFEST\s\d
 \.appveyor\.yml
 \bMANIFEST\s\d
 \bChanges\s\d
-
+\.icloud$
 \A\.github\b
 
