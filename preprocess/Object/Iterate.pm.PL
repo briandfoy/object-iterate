@@ -112,7 +112,7 @@ our %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
 	);
 
-our $VERSION     = '1.143_02';
+our $VERSION     = '1.144';
 
 our $Next  = '__next__';
 our $More  = '__more__';
