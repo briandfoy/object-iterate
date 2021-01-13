@@ -24,5 +24,10 @@ jobs:
               run: |
                 openssl version
                 cpan -M https://www.cpan.org -T Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
-            - name: Install
-              run: cpan .
+            - name: Install dependencies
+              run: |
+                cpan -M https://www.cpan.org -T .
+            - name: Run tests
+              run: |
+                perl Makefile.PL
+                make test
