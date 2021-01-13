@@ -23,6 +23,6 @@ jobs:
             - name: Prepare cpan
               run: |
                 openssl version
-                cpan Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
+                cpan -M https://www.cpan.org -T Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
             - name: Install
               run: cpan .

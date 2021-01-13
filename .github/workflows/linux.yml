@@ -35,19 +35,21 @@ jobs:
 
         container:
             image: perl:${{ matrix.perl-version }}
-
         steps:
             - uses: actions/checkout@v2
             - name: Platform check
               run: uname -a
             - name: Perl version check
               run: perl -V
-            - name: Prepare cpan
+            - name: Install cpanm and multiple modules
               run: |
-                openssl version
-                cpan Net::SSLeay IO::Socket::SSL ExtUtils::MakeMaker
-            - name: Install
-              run: cpan .
+                curl -L https://cpanmin.us | perl - App::cpanminus
+                cpanm --notest IO::Socket::SSL
+                cpanm --notest App::Cpan
+                cpan -M https://www.cpan.org -T ExtUtils::MakeMaker
+            - name: Install dependencies
+              run: |
+                cpan -M https://www.cpan.org -T .
             - name: Run tests
               run: |
                 perl Makefile.PL
