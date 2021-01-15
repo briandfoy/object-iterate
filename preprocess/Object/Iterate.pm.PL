@@ -7,6 +7,7 @@ if( @ARGV ) {
 		or die "Could not open file <$ARGV[0]>: $!";
 	select( $fh );
 	}
+	unlink $ARGV[0] or die "Could not remove prior $ARGV[0]: $!\n";
 
 my %CONFIG;
 $CONFIG{PROTOTYPE_ATTRIBUTE} = $] >= 5.020;
