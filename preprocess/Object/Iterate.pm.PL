@@ -1,18 +1,25 @@
+my $version = do {
+	require "./lib/Object/Iterate.pm";
+	$Object::Iterate::VERSION;
+	};
+print "Version is $version\n";
+
 if( @ARGV ) {
 	require File::Basename;
 	require File::Path;
+	unlink $ARGV[0] or die "Could not remove prior $ARGV[0]: $!\n";
 	my $dirname = File::Basename::dirname( $ARGV[0] );
 	File::Path::make_path( $dirname );
 	open my $fh, '>:utf8', $ARGV[0]
 		or die "Could not open file <$ARGV[0]>: $!";
 	select( $fh );
 	}
-	unlink $ARGV[0] or die "Could not remove prior $ARGV[0]: $!\n";
 
 my %CONFIG;
 $CONFIG{PROTOTYPE_ATTRIBUTE} = $] >= 5.020;
 
 LINE: while( <DATA> ) {
+	s/%%VERSION%%/$version/g;
 	unless( /\A#ifdef\s+(\S+)/ ) { print; next; }
 	my $item = $1;
 	if( $CONFIG{$item} ) {
@@ -117,7 +124,7 @@ our %EXPORT_TAGS = (
 	all => \@EXPORT_OK,
 	);
 
-our $VERSION     = '1.144';
+our $VERSION = '%%VERSION%%';
 
 our $Next  = '__next__';
 our $More  = '__more__';
