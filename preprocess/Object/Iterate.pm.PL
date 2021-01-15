@@ -146,8 +146,7 @@ Applies BLOCK to each item returned by C<< OBJECT->__next__ >>.
 This is the same thing as using a while loop, but C<iterate()>
 stays out of your way.
 
-	while( $object->__more__ )
-		{
+	while( $object->__more__ ) {
 		local $_ = $object->__next__;
 		...BLOCK...
 		}
@@ -224,8 +223,7 @@ elements.
 This is a map for something that cannot be represented as a
 list at one time.
 
-	while( $object->$More )
-		{
+	while( $object->$More ) {
 		local $_ = $object->__next__;
 
 		push @output, ...BLOCK...;
