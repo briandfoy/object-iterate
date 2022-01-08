@@ -31,7 +31,7 @@ expect you to use. Steal the code and inline it.
 
 To read about L<Object::Iterate>, look at the embedded documentation
 in the module itself. Inside the distribution, you can format it
-with L<perldoc|https://perldoc.perl.orgperldoc.html>:
+with L<perldoc|https://perldoc.perl.org/perldoc.html>:
 
 	% perl Makefile.PL
 	% make
