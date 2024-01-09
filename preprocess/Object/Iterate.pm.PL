@@ -104,7 +104,7 @@ change them (I<i.e.> C<$Object::Iterate::Next>). If your object does
 not have the specified methods, the functions will die.  You may want
 to wrap them in eval blocks.
 
-Since this module uses package variables to storethese methods names,
+Since this module uses package variables to store these methods names,
 the method names apply to every use of the functions no matter the
 object.  You might want to local()-ise the variables for different
 objects.
