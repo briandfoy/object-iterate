@@ -285,7 +285,7 @@ value of C<$Object::Iterate::Next>.
 
 This module is on Github:
 
-	http://github.com/briandfoy/Object-Iterate
+	http://github.com/briandfoy/object-iterate
 
 =head1 TO DO
 
