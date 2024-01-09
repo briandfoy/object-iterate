@@ -1,10 +1,8 @@
-use Test::More
+use Test::More;
 use Object::Iterate qw(imap igrep iterate);
 
-prototype_ok( &main::imap,    '&$' );
-prototype_ok( &main::igrep,   '&$' );
-prototype_ok( &main::iterate, '&$' );
-
+# since we are using a prototype here, the sub definition needs to
+# come before we use the sub
 sub prototype_ok(\&$;$) {
 	my( $sub, $prototype, $name ) = @_;
 	$name ||= 'function prototype is correct';
@@ -20,5 +18,10 @@ sub prototype_ok(\&$;$) {
 		ok(1, $name);
 		}
 	}
+
+prototype_ok( &main::imap,    '&$' );
+prototype_ok( &main::igrep,   '&$' );
+prototype_ok( &main::iterate, '&$' );
+
 
 done_testing();
