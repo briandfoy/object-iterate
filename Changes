@@ -1,5 +1,8 @@
 Revision history for Perl module Object::Iterate
 
+1.147_01 2024-04-10T17:42:51Z
+	* Try not indexing preprocess/
+
 1.147 2024-04-10T16:55:14Z
 	* Release again to investigate PAUSE indexing issue (#16)
 
