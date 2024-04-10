@@ -84,6 +84,9 @@ my %WriteMakefile = (
 				},
 			homepage => $github,
 			},
+		no_index => {
+			directory => [ 'preprocess' ]
+			},
 		},
 
 	clean => { FILES => "$dist-*" },
