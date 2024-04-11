@@ -42,13 +42,14 @@ my $module    = __PACKAGE__;
 
 my $github    = 'https://github.com/briandfoy/object-iterate';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
+( my $pod_file = $main_file ) =~ s/\.pm\z/.pod/;
 
 my %WriteMakefile = (
 	'MIN_PERL_VERSION' => '5.008',
 
 	'NAME'          => $module,
-	'ABSTRACT_FROM' => $main_file =~ s/\.pm\z/.pod/r,
-	'VERSION_FROM'  => $main_file,
+	'ABSTRACT_FROM' => $main_file,
+	'VERSION_FROM'  => $pod_file,
 	'AUTHOR'        => 'brian d foy <briandfoy@pobox.com>',
 	'LICENSE'       => 'artistic_2',
 
