@@ -47,7 +47,7 @@ my %WriteMakefile = (
 	'MIN_PERL_VERSION' => '5.008',
 
 	'NAME'          => $module,
-	'ABSTRACT_FROM' => $main_file,
+	'ABSTRACT_FROM' => $main_file =~ s/\.pm\z/.pod/r,
 	'VERSION_FROM'  => $main_file,
 	'AUTHOR'        => 'brian d foy <briandfoy@pobox.com>',
 	'LICENSE'       => 'artistic_2',
