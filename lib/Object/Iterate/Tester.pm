@@ -29,7 +29,7 @@ Object::Iterate::Tester - test module that uses Object::Iterate
 
 This module is on Github:
 
-	http://github.com/briandfoy/Object-Iterate
+	https://github.com/briandfoy/object-iterate
 
 =head1 AUTHOR
 
