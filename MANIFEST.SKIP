@@ -80,3 +80,5 @@ MANIFEST\s\d
 \.gitattributes\b
 
 .downstream.json
+agents/
+CLAUDE.md
