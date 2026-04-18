@@ -19,7 +19,7 @@ Object::Iterate::Tester - test module that uses Object::Iterate
 	use Object::Iterate qw( imap );
 	use Object::Iterate::Tester;
 
-	my $object = Object::Iterate::Tester->new();
+	my $object = Object::Iterate::Tester->new;
 
 	my @list = imap { $_ } $object;
 
