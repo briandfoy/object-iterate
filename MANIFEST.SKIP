@@ -82,3 +82,6 @@ MANIFEST\s\d
 .downstream.json
 agents/
 CLAUDE.md
+
+.downstream.json
+cpan_tester_reports
